@@ -43,7 +43,7 @@ type Logger struct {
 	Logger *log.Logger // system logger
 }
 
-// GetLogger returns an instance of a logger, with LogLevel set to the specified level.
+// GetLogger returns an instance of a logger, with Level set to the specified level.
 //
 // The system logger is initialized with the specified prefix and the standard system logger defaults
 // (write to os.Stderr in the default log format)
@@ -59,7 +59,7 @@ func (l *Logger) SetLevel(level LogLevel) {
 	l.Level = level
 }
 
-// Log logs the specified message, with arguments if Logger.LogLevel >= level
+// Log logs the specified message, with arguments if Logger.Level >= level
 func (l *Logger) Log(level LogLevel, fmt string, args ...interface{}) {
 	if level < 0 {
 		l.Logger.Printf(labels[1+ERROR]+fmt, args...)
@@ -73,17 +73,17 @@ func (l *Logger) Log(level LogLevel, fmt string, args ...interface{}) {
 	}
 }
 
-// Debug logs the specified message if this Logger.LogLevel is DEBUG or lower
+// Debug logs the specified message if this Logger.Level is DEBUG or lower
 func (l *Logger) Debug(fmt string, args ...interface{}) {
 	l.Log(DEBUG, fmt, args...)
 }
 
-// Info logs the specified message if this Logger.LogLevel is INFO or lower
+// Info logs the specified message if this Logger.Level is INFO or lower
 func (l *Logger) Info(fmt string, args ...interface{}) {
 	l.Log(INFO, fmt, args...)
 }
 
-// Warning logs the specified message if this Logger.LogLevel is WARNING or lower
+// Warning logs the specified message if this Logger.Level is WARNING or lower
 func (l *Logger) Warning(fmt string, args ...interface{}) {
 	l.Log(WARNING, fmt, args...)
 }
